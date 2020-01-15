@@ -1,0 +1,39 @@
+<form [formGroup] ="form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <!-- In the last section of template driven form we added validations
+           using HTML5 attribute i.e minlength="" but here in reactive forms
+           we do not use HTML 5 attributes we assign validators on assigning
+           form control object
+         -->
+        <input
+            formControlName="username"
+            id="username"
+            type="text"
+            class="form-control">
+            <!-- <div *ngIf ="form.get('username').touched && form.get('username').invalid" class ="alert alert-danger">username is required
+            </div> we can make function for form.get-->
+            <!-- here pending is a property which returns true if atleast one asynchronous
+             validation is in progress in checking text u can add loader-->
+            <!-- <div *ngIf="username.pending">checking....</div> -->
+            <div *ngIf ="username.touched && username.invalid" class ="alert alert-danger">
+              <div *ngIf="username.errors.required">username is required
+              </div>
+              <div *ngIf="username.errors.minlength">username minlength must be{{username.errors.minlength.requiredLength}}
+              </div>
+              <div *ngIf="username.errors.cannotContainSpace">username cannot contain spaces
+              </div>
+              <div *ngIf="username.errors.shouldBeUnique">username is already taken
+              </div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input
+            formControlName="password"
+            id="password"
+            type="text"
+            class="form-control">
+    </div>
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>

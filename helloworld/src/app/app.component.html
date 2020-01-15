@@ -1,0 +1,16 @@
+<courses></courses>
+<ul>
+  <li *ngFor="let course of courses">
+      {{course.name}}
+      <!-- <button (click)="onRemove(course)">Delete</button> -->
+      <button (click)="onChange(course)">update</button>
+  </li>
+</ul>
+<button (click)="onAdd()">Add
+</button>
+<!-- <app-contact-form>
+</app-contact-form>
+<signup-form>
+</signup-form> -->
+<app-new-course-form></app-new-course-form>
+
